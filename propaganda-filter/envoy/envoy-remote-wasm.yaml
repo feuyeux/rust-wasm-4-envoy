@@ -32,10 +32,22 @@ static_resources:
                 vm_config:
                   runtime: "envoy.wasm.runtime.v8"
                   code:
-                    local:
-                      filename: "/etc/propaganda_filter.wasm"
+                    remote:
+                      http_uri:
+                        uri: "http://192.168.3.147:8000/propaganda_filter.wasm"
+                        cluster: web_service
+                        timeout:
+                          seconds: 60
+                      sha256: ""
                   allow_precompiled: true
-          - name: envoy.router
+                configuration:
+                  '@type': type.googleapis.com/google.protobuf.StringValue
+                  value: |
+                    {
+                      "head_tag_name": "custom-version",
+                      "head_tag_value": "hello1-v1"
+                    }
+          - name: envoy.filters.http.router
             config: {}
   clusters:
   - name: web_service
