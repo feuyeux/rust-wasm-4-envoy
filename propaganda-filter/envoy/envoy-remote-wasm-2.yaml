@@ -44,10 +44,10 @@ static_resources:
                             code:
                               remote:
                                 http_uri:
-                                  uri: http://30.27.145.216:8000/propaganda_filter.wasm
+                                  uri: http://192.168.3.146:8000/propaganda-filter.wasm
                                   cluster: static_service
                                   timeout: 5s
-                                sha256: "da2e223bbb8c8072f50f519e8887dce4bc5f53a00eca5b05e983bc09476afa35"
+                                sha256: "8fd25de50834453cdb239032f47f1aaf0644f92207e80dee1dd88fff16ef8a5d"
                             allow_precompiled: true
                   - name: envoy.filters.http.router
                     typed_config: {}

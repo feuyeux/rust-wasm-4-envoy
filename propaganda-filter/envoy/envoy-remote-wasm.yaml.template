@@ -35,7 +35,7 @@ static_resources:
                   code:
                     remote:
                       http_uri:
-                        uri: "http://HOST_IP:8000/propaganda_filter.wasm"
+                        uri: "http://HOST_IP:8000/propaganda-filter.wasm"
                         cluster: web_service
                         timeout:
                           seconds: 60

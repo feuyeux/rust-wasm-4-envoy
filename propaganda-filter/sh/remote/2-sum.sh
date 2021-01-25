@@ -8,10 +8,10 @@ cd ../..
 
 #https://www.baeldung.com/linux/sha-256-from-command-line
 #brew install coreutils
-#crypto_util.getSha256Digest
+#Hex::encode(crypto_util.getSha256Digest(response->body()))
 set -e
-sha256sum target/wasm32-unknown-unknown/release/propaganda_filter.wasm | awk '{print $1}' \
-> target/wasm32-unknown-unknown/release/propaganda_filter.sha256
+sha256sum target/wasm32-unknown-unknown/release/propaganda-filter.wasm | awk '{print $1}' \
+> target/wasm32-unknown-unknown/release/propaganda-filter.sha256
 
 #SECRET="0123456789abcdef"
 #| openssl dgst -sha256 -hmac $SECRET -binary | base64 \

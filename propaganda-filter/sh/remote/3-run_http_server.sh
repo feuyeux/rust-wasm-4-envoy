@@ -10,7 +10,7 @@ cd "$SCRIPT_PATH" || exit
 cd ../..
 
 ##
-sha_256=$(cat target/wasm32-unknown-unknown/release/propaganda_filter.sha256)
+sha_256=$(cat target/wasm32-unknown-unknown/release/propaganda-filter.sha256)
 host_ip=$(ipconfig getifaddr en0)
 cp envoy/envoy-remote-wasm.yaml.template envoy/envoy-remote-wasm.yaml
 

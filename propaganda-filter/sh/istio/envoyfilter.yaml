@@ -1,0 +1,34 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: outbound-propaganda-filter
+spec:
+  configPatches:
+    - applyTo: HTTP_FILTER
+      match:
+        context: SIDECAR_OUTBOUND
+        listener:
+          filterChain:
+            filter:
+              name: envoy.http_connection_manager
+              subFilter:
+                name: envoy.router
+      patch:
+        operation: INSERT_BEFORE
+        value:
+          config:
+            config:
+              name: example-filter
+              rootId: my_root_id
+              vmConfig:
+                code:
+                  local:
+                    filename: /var/local/lib/wasm-filters/propaganda-filter.wasm
+                runtime: envoy.wasm.runtime.v8
+                vmId: example-filter
+                allow_precompiled: true
+          name: envoy.filters.http.wasm
+  workloadSelector:
+    labels:
+      app: productpage
+      version: v1
