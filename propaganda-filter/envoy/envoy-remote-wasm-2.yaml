@@ -42,8 +42,12 @@ static_resources:
                             runtime: "envoy.wasm.runtime.v8"
                             vm_id: "propaganda_filter_vm"
                             code:
-                              local:
-                                filename: "/etc/propaganda_filter.wasm"
+                              remote:
+                                http_uri:
+                                  uri: http://30.27.145.216:8000/propaganda_filter.wasm
+                                  cluster: static_service
+                                  timeout: 5s
+                                sha256: "da2e223bbb8c8072f50f519e8887dce4bc5f53a00eca5b05e983bc09476afa35"
                             allow_precompiled: true
                   - name: envoy.filters.http.router
                     typed_config: {}

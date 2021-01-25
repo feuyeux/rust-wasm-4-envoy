@@ -6,7 +6,6 @@ services:
       dockerfile: Dockerfile.proxy.local
     volumes:
       - ./envoy/envoy-local-wasm.yaml:/etc/envoy-local-wasm.yaml
-      - ./envoy/envoy-remote-wasm.yaml:/etc/envoy-remote-wasm.yaml
       - ./target/wasm32-unknown-unknown/release/propaganda_filter.wasm:/etc/propaganda_filter.wasm
     networks:
       - envoymesh
