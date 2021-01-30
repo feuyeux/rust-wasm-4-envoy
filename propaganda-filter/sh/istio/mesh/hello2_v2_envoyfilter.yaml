@@ -1,7 +1,8 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
-  name: hello2-deploy-v2-propaganda-filter
+  name: hello2v2-propaganda-filter
+  namespace: http-hello
 spec:
   workloadSelector:
     labels:
@@ -32,7 +33,7 @@ spec:
                   value: |
                     {
                       "head_tag_name": "version",
-                      "head_tag_value": "v1"
+                      "head_tag_value": "v2"
                     }
                 vm_config:
                   runtime: "envoy.wasm.runtime.v8"
