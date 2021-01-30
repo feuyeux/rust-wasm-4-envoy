@@ -23,28 +23,7 @@ static_resources:
                           route:
                             cluster: web_service
                 http_filters:
-                  - name: envoy.filters.http.wasm
-                    typed_config:
-                      "@type": type.googleapis.com/udpa.type.v1.TypedStruct
-                      type_url: type.googleapis.com/envoy.extensions.filters.http.wasm.v3.Wasm
-                      value:
-                        config:
-                          name: "propaganda_filter"
-                          root_id: "propaganda_filter"
-                          configuration:
-                            "@type": "type.googleapis.com/google.protobuf.StringValue"
-                            value: |
-                              {
-                                "head_tag_name": "custom-version",
-                                "head_tag_value": "hello1-v1"
-                              }
-                          vm_config:
-                            runtime: "envoy.wasm.runtime.v8"
-                            vm_id: "propaganda_filter_vm"
-                            code:
-                              local:
-                                filename: "/etc/propaganda_filter.wasm"
-                            allow_precompiled: true
+c
                   - name: envoy.filters.http.router
                     typed_config: {}
   clusters:
