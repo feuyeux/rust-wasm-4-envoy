@@ -6,5 +6,4 @@ SCRIPT_PATH="$(
 cd "$SCRIPT_PATH" || exit
 alias k="kubectl --kubeconfig ${HOME}/shop_config/ack_cd"
 
-#k -n http-hello exec deployment/hello1-deploy-v2 -c istio-proxy -- ps aux
-k -n http-hello logs -f deployment/hello1-deploy-v2 -c istio-proxy
+k -n http-hello logs -f deployment/hello2-deploy-v3 -c hello-v3-deploy

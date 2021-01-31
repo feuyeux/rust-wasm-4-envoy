@@ -5,32 +5,18 @@ metadata:
   name: hello2-vs
 spec:
   hosts:
-    - hello2-svc.http-hello
+    - hello2-svc
   http:
-  - name: hello2-v1-route
-    match:
-    - headers:
-        version:
-          exact: v1
-    route:
-    - destination:
-        host: hello2-svc
-        subset: v1
   - name: hello2-v2-route
     match:
     - headers:
-        version:
-          exact: v2
+        route-v:
+          exact: hello2v2
     route:
     - destination:
         host: hello2-svc
-        subset: v2
-  - name: hello2-v3-route
-    match:
-    - headers:
-        version:
-          exact: v3
-    route:
+        subset: hello2v2
+  - route:
     - destination:
         host: hello2-svc
-        subset: v3
+        subset: hello2v3

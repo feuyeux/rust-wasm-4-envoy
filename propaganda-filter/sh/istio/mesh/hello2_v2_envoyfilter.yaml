@@ -32,8 +32,8 @@ spec:
                   "@type": "type.googleapis.com/google.protobuf.StringValue"
                   value: |
                     {
-                      "head_tag_name": "version",
-                      "head_tag_value": "v2"
+                      "head_tag_name": "route-v",
+                      "head_tag_value": "hello3v2"
                     }
                 vm_config:
                   runtime: "envoy.wasm.runtime.v8"

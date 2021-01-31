@@ -6,12 +6,12 @@ metadata:
 spec:
   host: hello3-svc
   subsets:
-    - name: v1
+    - name: hello3v1
       labels:
         version: v1
-    - name: v2
+    - name: hello3v2
       labels:
         version: v2
-    - name: v3
+    - name: hello3v3
       labels:
         version: v3

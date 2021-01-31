@@ -30,27 +30,27 @@ spec:
   - name: hello1-v1-route
     match:
     - headers:
-        version:
+        route-v:
           exact: v1
     route:
     - destination:
         host: hello1-svc
-        subset: v1
+        subset: hello1v1
   - name: hello1-v2-route
     match:
     - headers:
-        version:
+        route-v:
           exact: v2
     route:
     - destination:
         host: hello1-svc
-        subset: v2
+        subset: hello1v2
   - name: hello1-v3-route
     match:
     - headers:
-        version:
+        route-v:
           exact: v3
     route:
     - destination:
         host: hello1-svc
-        subset: v3
+        subset: hello1v3
