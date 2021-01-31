@@ -5,7 +5,7 @@ metadata:
   name: hello2-vs
 spec:
   hosts:
-  - hello2-svc.http-hello
+    - hello2-svc.http-hello
   http:
   - name: hello2-v1-route
     match:

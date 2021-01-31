@@ -25,6 +25,7 @@ spec:
   - "*"
   gateways:
   - hello-gateway
+#  - mesh
   http:
   - name: hello1-v1-route
     match:
