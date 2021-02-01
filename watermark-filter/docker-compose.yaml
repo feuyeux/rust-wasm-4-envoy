@@ -1,0 +1,32 @@
+version: '2'
+services:
+  proxy:
+    build:
+      context: ./envoy
+      dockerfile: Dockerfile.proxy
+    volumes:
+      - ./envoy/envoy-wasm.yaml:/etc/envoy-wasm.yaml
+      - ./target/wasm32-unknown-unknown/release/watermark_filter.wasm:/etc/watermark_filter.wasm
+    networks:
+      - envoymesh
+    expose:
+      - "80"
+      - "8001"
+    ports:
+      - "18000:80"
+      - "18001:8001"
+  web_service:
+    image: hashicorp/http-echo
+    command:
+      - '-text=watermark is here'
+    networks:
+      envoymesh:
+        aliases:
+          - web_service
+    expose:
+      - "5678"
+    ports:
+      - "18080:5678"
+networks:
+  envoymesh:
+    external: true
