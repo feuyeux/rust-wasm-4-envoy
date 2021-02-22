@@ -7,12 +7,13 @@ spec:
   workloadSelector:
     labels:
       app: hello1-deploy-v2
+      version: v2
   configPatches:
     - applyTo: HTTP_FILTER
       match:
         context: SIDECAR_OUTBOUND
         proxy:
-          proxyVersion: "^1\\.7\\.*"
+          proxyVersion: "^1\\.8\\.*"
         listener:
           filterChain:
             filter:
@@ -43,3 +44,4 @@ spec:
                   code:
                     local:
                       filename: /var/local/lib/wasm-filters/propaganda-filter.wasm
+                  allow_precompiled: true

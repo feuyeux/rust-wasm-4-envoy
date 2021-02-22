@@ -15,6 +15,7 @@ echo "built it !"
 echo "file path and size:"
 ls -hl target/wasm32-unknown-unknown/release/propaganda_filter.wasm
 
+#resize package
 #cargo install wasm-gc
 wasm-gc ./target/wasm32-unknown-unknown/release/propaganda_filter.wasm ./target/wasm32-unknown-unknown/release/propaganda-filter.wasm
 ls -hl target/wasm32-unknown-unknown/release/propaganda-filter.wasm

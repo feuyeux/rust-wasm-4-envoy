@@ -1,11 +1,12 @@
 #!/usr/bin/env sh
-# shellcheck disable=SC2028
 SCRIPT_PATH="$(
   cd "$(dirname "$0")" >/dev/null 2>&1
   pwd -P
 )/"
 cd "$SCRIPT_PATH" || exit
-alias k="kubectl --kubeconfig ${HOME}/shop_config/ack_cd"
+
+source config
+alias k="kubectl --kubeconfig $USER_CONFIG"
 
 echo "ingress v2:"
 ingressGatewayIp=$(k -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')

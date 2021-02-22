@@ -44,4 +44,11 @@ echo
 k exec "$hello2_v1_pod" -c hello-v1-deploy -n http-hello -- curl -s http://hello1-svc:8001/hello/eric
 echo
 
+echo "Deploy mesh"
 m apply -f mesh
+echo "Deploy wasm envoyfilter"
+m apply -f envoyfilter
+
+echo "Deploy lua envoyfilter"
+#https://istio.io/latest/news/releases/1.9.x/announcing-1.9/upgrade-notes/
+m apply -f lua.envoyfilter

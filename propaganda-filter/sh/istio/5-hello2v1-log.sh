@@ -4,6 +4,8 @@ SCRIPT_PATH="$(
   pwd -P
 )/"
 cd "$SCRIPT_PATH" || exit
-alias k="kubectl --kubeconfig ${HOME}/shop_config/ack_cd"
+
+source config
+alias k="kubectl --kubeconfig $USER_CONFIG"
 
 k -n http-hello logs -f deployment/hello2-deploy-v1 -c hello-v1-deploy

@@ -11,6 +11,8 @@ spec:
     - applyTo: HTTP_FILTER
       match:
         context: SIDECAR_OUTBOUND
+        proxy:
+          proxyVersion: "^1\\.8\\.*"
         listener:
           filterChain:
             filter:
@@ -18,7 +20,7 @@ spec:
               subFilter:
                 name: envoy.router
       patch:
-        operation: INSERT_BEFORE
+        operation: INSERT_FIRST
         value:
           name: envoy.filters.http.wasm
           typed_config:
