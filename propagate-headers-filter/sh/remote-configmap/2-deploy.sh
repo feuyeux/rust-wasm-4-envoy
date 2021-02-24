@@ -21,7 +21,7 @@ m label ns http-hello istio-injection=enabled
 echo "deploy"
 #部署数据平面
 cd ../..
-k apply -f config/kube/
+k -n http-hello apply -f config/kube/
 
 echo "waiting for hello2-deploy-v1"
 k -n http-hello wait --for=condition=ready pod -l app=hello2-deploy-v2
@@ -43,10 +43,10 @@ k exec "$hello2_v1_pod" -c hello-v1-deploy -n http-hello -- curl -s http://hello
 echo
 
 echo "Deploy mesh"
-m apply -f config/mesh/
+m -n http-hello apply -f config/mesh/
 echo "Deploy wasm envoyfilter"
-m apply -f config/envoyfilter/
+m -n http-hello apply -f config/envoyfilter/
 
 #echo "Deploy lua envoyfilter"
 #https://istio.io/latest/news/releases/1.9.x/announcing-1.9/upgrade-notes/
-#m apply -f config/lua.envoyfilter/
+#m -n http-hello apply -f config/lua.envoyfilter/

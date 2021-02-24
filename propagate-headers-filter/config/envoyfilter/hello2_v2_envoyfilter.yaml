@@ -2,7 +2,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
   name: hello2v2-propaganda-filter
-  namespace: http-hello
 spec:
   workloadSelector:
     labels:

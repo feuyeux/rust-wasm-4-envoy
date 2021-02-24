@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: http-hello
   name: hello2-deploy-v1
   labels:
     app: hello2-deploy-v1
@@ -27,14 +26,13 @@ spec:
           image: registry.cn-beijing.aliyuncs.com/asm_repo/http_springboot_v1:1.0.0
           env:
             - name: HTTP_HELLO_BACKEND
-              value: "hello3-svc.http-hello.svc.cluster.local"
+              value: "hello3-svc"
           ports:
             - containerPort: 8001
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: http-hello
   name: hello2-deploy-v2
   labels:
     app: hello2-deploy-v2
@@ -60,6 +58,6 @@ spec:
           image: registry.cn-beijing.aliyuncs.com/asm_repo/http_springboot_v2:1.0.0
           env:
             - name: HTTP_HELLO_BACKEND
-              value: "hello3-svc.http-hello.svc.cluster.local"
+              value: "hello3-svc"
           ports:
             - containerPort: 8001

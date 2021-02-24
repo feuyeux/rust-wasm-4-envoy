@@ -28,7 +28,7 @@ echo "3 check..."
 sleep 10s
 for i in {1..2}; do
   for j in {2..2}; do
-    echo "deployment/hello$i-deploy-v$j:"
+    echo "check deployment/hello$i-deploy-v$j:"
     k -n http-hello exec -it deployment/hello"$i"-deploy-v"$j" -c istio-proxy -- ls -l /var/local/lib/wasm-filters/
   done
 done

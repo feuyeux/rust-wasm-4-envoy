@@ -1,7 +1,6 @@
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: http-hello
   name: hello3-svc
   labels:
     app: hello3-svc

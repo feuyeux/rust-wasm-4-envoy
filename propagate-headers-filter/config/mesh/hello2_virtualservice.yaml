@@ -1,7 +1,6 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  namespace: http-hello
   name: hello2-vs
 spec:
   hosts:
@@ -11,12 +10,12 @@ spec:
     match:
     - headers:
         route-v:
-          exact: hello2v1
+          exact: hello2v2
     route:
     - destination:
         host: hello2-svc
-        subset: hello2v1
+        subset: hello2v2
   - route:
     - destination:
         host: hello2-svc
-        subset: hello2v2
+        subset: hello2v1

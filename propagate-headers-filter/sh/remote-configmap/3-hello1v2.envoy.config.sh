@@ -7,7 +7,6 @@ cd "$SCRIPT_PATH" || exit
 
 source config
 alias k="kubectl --kubeconfig $USER_CONFIG"
-rm -f d*.json
 timestamp=$(date "+%Y%m%d-%H%M%S")
 hello1_v2_pod=$(k get pod -l app=hello1-deploy-v2 -n http-hello -o jsonpath={.items..metadata.name})
 echo "Dump from $hello1_v2_pod"
@@ -16,3 +15,4 @@ k -n http-hello exec "$hello1_v2_pod" -c istio-proxy \
 #grep "head_tag_name" dynamic_listeners-"$timestamp".json
 grep "propaganda_filter_vm" dynamic_listeners-"$timestamp".json
 grep "envoy.lua" dynamic_listeners-"$timestamp".json
+rm -f d*.json
