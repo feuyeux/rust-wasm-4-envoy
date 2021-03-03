@@ -45,7 +45,8 @@ echo
 echo "Deploy mesh"
 m -n http-hello apply -f config/mesh/
 echo "Deploy wasm envoyfilter"
-m -n http-hello apply -f config/envoyfilter/
+# m -n http-hello apply -f config/envoyfilter/
+m -n istio-system apply -f config/envoyfilter/
 
 #echo "Deploy lua envoyfilter"
 #https://istio.io/latest/news/releases/1.9.x/announcing-1.9/upgrade-notes/
