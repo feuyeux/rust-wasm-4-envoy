@@ -1,0 +1,17 @@
+apiVersion: istio.alibabacloud.com/v1beta1
+kind: ASMFilterDeployment
+metadata:
+  name: propagate-header
+spec:
+  workload:
+    kind: Deployment
+    labels:
+      app: hello2-deploy-v2
+      version: v2
+  filter:
+    parameters: '{"head_tag_name": "route-v", "head_tag_value": "hello3v2"}'
+    image: 'wasm-repo-registry.cn-beijing.cr.aliyuncs.com/asm_wasm/propagate_header:0.0.1'
+    imagePullOptions:
+      pullSecret: 'asmwasm-cache'
+    rootID: 'propaganda_filter_root'
+    id: 'propagate-header'
