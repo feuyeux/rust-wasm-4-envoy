@@ -8,5 +8,8 @@ cd "$SCRIPT_PATH" || exit
 source config
 alias k="kubectl --kubeconfig $USER_CONFIG"
 alias m="kubectl --kubeconfig $MESH_CONFIG"
-k get daemonset -n istio-system
-m apply -f asm-filter-deployment.yaml
+
+echo "Deploy ASMFilterDeployment"
+m apply -f afd/ -n "$NS"
+m get envoyfilter -n "$NS"
+m get asmfilterdeployment -n "$NS"

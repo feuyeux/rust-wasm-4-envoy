@@ -3,6 +3,9 @@ use proxy_wasm::traits::*;
 use proxy_wasm::types::*;
 use serde_json::Value;
 
+// https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/wasm/v3/wasm.proto#envoy-v3-api-msg-extensions-wasm-v3-pluginconfig
+// https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/wasm/v3/wasm.proto#envoy-v3-api-msg-extensions-wasm-v3-vmconfig
+
 #[no_mangle]
 pub fn _start() {
     proxy_wasm::set_log_level(LogLevel::Info);
@@ -68,7 +71,7 @@ impl RootContext for PropagandaHeaderRoot {
                         .to_string();
                 }
                 None => {
-                    warn!("NO CONFIG");
+                    warn!("NO ROOT_CONFIG");
                 }
             }
         }

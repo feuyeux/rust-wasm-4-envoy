@@ -18,21 +18,22 @@ done
 
 mesh_inside_test() {
   echo "\n== mesh inside v2 test =="
-  hello3_v2_pod=$(k get pod -l app=hello3-deploy-v2 -n http-hello -o jsonpath={.items..metadata.name})
+  hello3_v2_pod=$(k get pod -l app=hello3-deploy-v2 -n "$NS" -o jsonpath={.items..metadata.name})
   echo "= hello1 v2:"
   for j in {1..3}; do
-    k -n http-hello exec "$hello3_v2_pod" -c hello-v2-deploy -- curl -s -H "route-v:v2" hello1-svc:8001/hello/eric
+    k -n "$NS" exec "$hello3_v2_pod" -c hello-v2-deploy -- curl -s -H "route-v:v2" hello1-svc:8001/hello/eric
     echo
   done
   echo "\n= hello2 v2:"
   for j in {1..3}; do
-    k -n http-hello exec "$hello3_v2_pod" -c hello-v2-deploy -- curl -s -H "route-v:hello2v2" hello2-svc:8001/hello/eric
+    k -n "$NS" exec "$hello3_v2_pod" -c hello-v2-deploy -- curl -s -H "route-v:hello2v2" hello2-svc:8001/hello/eric
     echo
   done
   echo "\n= hello3 v2:"
   for j in {1..3}; do
-    k -n http-hello exec "$hello3_v2_pod" -c hello-v2-deploy -- curl -s -H "route-v:hello2v2" hello3-svc:8001/hello/eric
+    k -n "$NS" exec "$hello3_v2_pod" -c hello-v2-deploy -- curl -s -H "route-v:hello3v2" hello3-svc:8001/hello/eric
     echo
   done
 }
-mesh_inside_test
+
+#mesh_inside_test

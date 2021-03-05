@@ -13,13 +13,13 @@ PORT=18001
 NS=hello-abtest
 
 echo "1 Deploy"
-k get ns $NS
+k get ns "$NS"
 # exist return 0
 # not exist return 1
 RESULT=$?
 if [[ $RESULT == 1 ]]; then
-    sh ../common/deploy.sh $NS S
-    m -n $NS apply -f gw$PORT.yaml
+    sh ../common/deploy.sh "$NS" S
+    m -n "$NS" apply -f gw$PORT.yaml
 fi
 
 echo "2 Verify"
