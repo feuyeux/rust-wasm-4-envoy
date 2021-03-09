@@ -7,11 +7,19 @@ cd "$SCRIPT_PATH" || exit
 source config
 alias k="kubectl --kubeconfig $USER_CONFIG"
 
-MESH_ID=cf1c81c59d8dd49e394696c1d63956262
+#### secret ####
+# asmwasm-cache
+# wasm-repo-registry.cn-beijing.cr.aliyuncs.com
+# feuyeux@126.com
 
-aliyun servicemesh UpdateMeshFeature \
-  --ServiceMeshId $MESH_ID \
-  --WebAssemblyFilterEnabled=true
+# aliyun servicemesh UpdateMeshFeature \
+#   --ServiceMeshId $MESH_ID \
+#   --WebAssemblyFilterEnabled=false
+
+# aliyun servicemesh UpdateMeshFeature \
+#   --ServiceMeshId $MESH_ID \
+#   --WebAssemblyFilterEnabled=true
+# sleep 5s
 
 aliyun servicemesh DescribeServiceMeshDetail \
   --ServiceMeshId $MESH_ID |

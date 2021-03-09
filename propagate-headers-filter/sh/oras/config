@@ -1,5 +1,6 @@
 # kubeconfig of user's kubenetes cluster
-USER_CONFIG=$HOME/shop_config/kubeconfig/ack_3rd_staging
+USER_CONFIG=$HOME/shop_config/kubeconfig/ack_production
 # kubeconfig of user's servicemesh cluster
-MESH_CONFIG=$HOME/shop_config/kubeconfig/asm_staging
+MESH_CONFIG=$HOME/shop_config/kubeconfig/asm_production
 NS=hello-ab
+MESH_ID=cffe491c7745348e19ec4891d8b458e49

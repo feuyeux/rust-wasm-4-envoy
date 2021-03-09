@@ -9,6 +9,7 @@ spec:
       app: hello2-deploy-v2
       version: v2
   filter:
+    patchContext: 'SIDECAR_OUTBOUND'
     parameters: '{"head_tag_name": "route-v", "head_tag_value": "hello3v2"}'
     image: 'wasm-repo-registry.cn-beijing.cr.aliyuncs.com/asm_wasm/propagate_header:0.0.1'
     imagePullOptions:
