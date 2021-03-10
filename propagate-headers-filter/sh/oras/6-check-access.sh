@@ -19,3 +19,5 @@ k exec "$hello2_v1_pod" -c hello-v1-deploy -n "$NS" -- curl -s http://hello2-svc
 echo
 k exec "$hello2_v1_pod" -c hello-v1-deploy -n "$NS" -- curl -s http://hello1-svc:8001/hello/eric
 echo
+
+k -n "$NS" exec "$hello2_v1_pod" -c istio-proxy -- curl -s localhost:15090/stats/prometheus |grep istio_request_total
